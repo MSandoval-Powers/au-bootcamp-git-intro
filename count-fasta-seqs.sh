@@ -63,7 +63,7 @@
 # files that were 'given to' this script. The variable "$@" will be very useful
 # for this. Let's take a look at what it gives us:
 
-echo "$@"
+#echo "$@"
 
 
 # How are you going to work with each file path?
@@ -99,15 +99,11 @@ for filepath in "$@"
 do
 
 #Calculate number of sequences in the fasta file and make variable to hold 
-        numberofseq=`grep -n '>' $1 | wc -l`
-        echo "Number of sequences in $1 is $numberofseq"
-#Subtract 1 from total number of sequences to pair to array 
-        Num=`expr $numberofseq - 1 | bc`
-#Separate the sequence from the header
-        name=($(grep '>' $1 | sed 's/>//')) 
-        sequence=($(grep -v '>' $1))
+        numberofseq=$(grep '>' $filepath | wc -l)
+#        echo "Number of sequences in" "$filepath" "is" "$numberofseq"
+
 #print sequence name and percentage to output file
-        echo -e "Sequence name\tGC Percentage" >GCcount.txt
+      echo -e "$numberofseq\t$filepath"
 
 
 done
