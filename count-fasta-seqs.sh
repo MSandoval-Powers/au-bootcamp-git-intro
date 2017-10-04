@@ -65,6 +65,7 @@
 
 echo "$@"
 
+
 # How are you going to work with each file path?
 # HINT: for loop (remember "for do done"?)
 #
@@ -93,4 +94,22 @@ echo "$@"
 # Good luck!
 #
 # ADD YOUR CODE BELOW:
+
+for filepath in "$@"
+do
+
+#Calculate number of sequences in the fasta file and make variable to hold 
+        numberofseq=`grep -n '>' $1 | wc -l`
+        echo "Number of sequences in $1 is $numberofseq"
+#Subtract 1 from total number of sequences to pair to array 
+        Num=`expr $numberofseq - 1 | bc`
+#Separate the sequence from the header
+        name=($(grep '>' $1 | sed 's/>//')) 
+        sequence=($(grep -v '>' $1))
+#print sequence name and percentage to output file
+        echo -e "Sequence name\tGC Percentage" >GCcount.txt
+
+
+done
+
 
