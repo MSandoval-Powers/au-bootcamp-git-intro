@@ -101,6 +101,7 @@ for f in "$@"
 	do
 		#print sequence name and number
 		filen=$(basename "$f")
+		#separate headers from sequences
 		echo "$(grep '>' $f | wc -l) $filen"
 		echo "$(grep '>' $f | wc -l)" >> stor.txt
 		if [ $f = $last ]
