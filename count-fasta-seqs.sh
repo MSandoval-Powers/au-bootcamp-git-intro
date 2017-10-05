@@ -95,17 +95,14 @@
 #
 # ADD YOUR CODE BELOW:
 
-for filepath in "$@"
+for f in "$@"
 do
 
 #Calculate number of sequences in the fasta file and make variable to hold 
-        numberofseq=$(grep '>' $filepath | wc -l)
-#        echo "Number of sequences in" "$filepath" "is" "$numberofseq"
+        numberofseq=$(grep '>' $f | wc -l)
 
-#print sequence name and percentage to output file
-      echo -e "$numberofseq\t$filepath"
-
-
-done
+#print sequence name and number
+      echo -e "$numberofseq\t$f"
+done 
 
 
