@@ -99,14 +99,13 @@ for last in "$@"; do true; done #gets the last argument for the next step
 touch stor.txt
 for f in "$@"
 	do
-		#Calculate number of seq in the fasta file and make variable to hold 
-        	
 		#print sequence name and number
-		echo "$(grep '>' $f | wc -l)\t$f"
+		filen=$(basename "$f")
+		echo "$(grep '>' $f | wc -l) $filen"
 		echo "$(grep '>' $f | wc -l)" >> stor.txt
 		if [ $f = $last ]
 		then
-                	echo "Total lines: `awk '{ sum += $1 } END { print sum }' stor.txt`"
+                	echo `awk '{ sum += $1 } END { print sum }' stor.txt`
 			rm stor.txt #not sure how to get the number in a shell 
 		fi
 	done 
