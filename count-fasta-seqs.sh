@@ -103,6 +103,7 @@ for f in "$@"
 		filen=$(basename "$f")
 		#separate headers from sequences
 		echo "$(grep '>' $f | wc -l) $filen"
+		#obtain workcount for files and store count
 		echo "$(grep '>' $f | wc -l)" >> stor.txt
 		if [ $f = $last ]
 		then
