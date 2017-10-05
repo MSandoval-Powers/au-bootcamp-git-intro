@@ -95,6 +95,12 @@
 #
 # ADD YOUR CODE BELOW:
 
+# DESCRIPTION OF SCRIPT:
+# this script takes however many file paths to the desired fasta files as input
+# it then loops through each file and counts the number of sequences in it
+# the output is a printed message of the total number of sequences in each file, along with the file name, and the total number of sequences across all file paths.
+
+
 for last in "$@"; do true; done #gets the last argument for the next step
 touch stor.txt
 for f in "$@"
