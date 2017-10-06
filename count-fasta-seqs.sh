@@ -95,6 +95,9 @@
 #
 # ADD YOUR CODE BELOW:
 
+
+
+
 for last in "$@"; do true; done #gets the last argument for the next step
 touch stor.txt
 for f in "$@"
@@ -104,12 +107,10 @@ for f in "$@"
 		#separate headers from sequences
 		echo "$(grep '>' $f | wc -l) $filen"
 		#obtain line count for file and store count total
-		echo "$(grep '>' $f | wc -l)" >> stor.txt
+		grep '>' $f | wc -l >> stor.txt
 		if [ $f = $last ]
 		then
                 	echo `awk '{ sum += $1 } END { print sum }' stor.txt`
 			rm stor.txt #not sure how to get the number in a shell 
 		fi
 	done 
-
-
